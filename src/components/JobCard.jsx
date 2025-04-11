@@ -1,11 +1,10 @@
 import { api } from "../services/api";
-import { useState } from "react";
 import toast from "react-hot-toast";
 
 const JobCard = ({ job, fetchJobs }) => {
   const handleDelete = async () => {
     try {
-      await api.delete(`/jobs/${job._id}`);
+      await api.delete(`/api/jobs/${job._id}`);
       fetchJobs();
       toast.success("Job deleted successfully.");
     } catch (error) {
@@ -16,7 +15,10 @@ const JobCard = ({ job, fetchJobs }) => {
 
   const handleStatusChange = async (e) => {
     try {
-      await api.patch(`/jobs/${job._id}`, { ...job, status: e.target.value });
+      await api.patch(`/api/jobs/${job._id}`, {
+        ...job,
+        status: e.target.value,
+      });
       fetchJobs();
       toast.success("Status updated.");
     } catch (error) {
@@ -29,12 +31,19 @@ const JobCard = ({ job, fetchJobs }) => {
     <div className="job-card">
       <div className="job-info">
         <h3>{job.company}</h3>
-        <p><strong>Role:</strong> {job.role}</p>
-        <p><strong>Date:</strong> {new Date(job.appliedDate).toLocaleDateString()}</p>
+        <p>
+          <strong>Role:</strong> {job.role}
+        </p>
+        <p>
+          <strong>Date:</strong>{" "}
+          {new Date(job.appliedDate).toLocaleDateString()}
+        </p>
         {job.link && (
           <p>
             <strong>Link:</strong>{" "}
-            <a href={job.link} target="_blank" rel="noreferrer">View</a>
+            <a href={job.link} target="_blank" rel="noreferrer">
+              View
+            </a>
           </p>
         )}
       </div>

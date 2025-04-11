@@ -8,7 +8,7 @@ const JobForm = ({ fetchJobs }) => {
     role: "",
     status: "Applied",
     appliedDate: "",
-    link: ""
+    link: "",
   });
 
   const handleChange = (e) => {
@@ -23,9 +23,15 @@ const JobForm = ({ fetchJobs }) => {
     }
 
     try {
-      await api.post("/jobs", form);
+      await api.post("/api/jobs", form);
       fetchJobs();
-      setForm({ company: "", role: "", status: "Applied", appliedDate: "", link: "" });
+      setForm({
+        company: "",
+        role: "",
+        status: "Applied",
+        appliedDate: "",
+        link: "",
+      });
       toast.success("Job added successfully!");
     } catch (error) {
       console.error("Error adding job:", error);
@@ -35,16 +41,39 @@ const JobForm = ({ fetchJobs }) => {
 
   return (
     <form onSubmit={handleSubmit} className="job-form">
-      <input name="company" placeholder="Company Name" value={form.company} onChange={handleChange} required />
-      <input name="role" placeholder="Job Role" value={form.role} onChange={handleChange} required />
+      <input
+        name="company"
+        placeholder="Company Name"
+        value={form.company}
+        onChange={handleChange}
+        required
+      />
+      <input
+        name="role"
+        placeholder="Job Role"
+        value={form.role}
+        onChange={handleChange}
+        required
+      />
       <select name="status" value={form.status} onChange={handleChange}>
         <option value="Applied">Applied</option>
         <option value="Interview">Interview</option>
         <option value="Offer">Offer</option>
         <option value="Rejected">Rejected</option>
       </select>
-      <input name="appliedDate" type="date" value={form.appliedDate} onChange={handleChange} required />
-      <input name="link" placeholder="Application Link (Optional)" value={form.link} onChange={handleChange} />
+      <input
+        name="appliedDate"
+        type="date"
+        value={form.appliedDate}
+        onChange={handleChange}
+        required
+      />
+      <input
+        name="link"
+        placeholder="Application Link (Optional)"
+        value={form.link}
+        onChange={handleChange}
+      />
       <button type="submit">Add Job</button>
     </form>
   );

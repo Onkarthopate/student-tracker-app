@@ -8,7 +8,7 @@ const JobList = ({ fetchTrigger }) => {
 
   const fetchJobs = async () => {
     try {
-      const res = await api.get("/jobs");
+      const res = await api.get("/api/jobs");
       setJobs(res.data);
     } catch (error) {
       console.error("Error fetching jobs:", error);
@@ -20,9 +20,8 @@ const JobList = ({ fetchTrigger }) => {
     console.log("Fetched jobs:", jobs);
   }, [fetchTrigger]);
 
-  const filteredJobs = filter === "All"
-    ? jobs
-    : jobs.filter((job) => job.status === filter);
+  const filteredJobs =
+    filter === "All" ? jobs : jobs.filter((job) => job.status === filter);
 
   return (
     <div>
