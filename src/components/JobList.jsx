@@ -17,7 +17,6 @@ const JobList = ({ fetchTrigger }) => {
 
   useEffect(() => {
     fetchJobs();
-    console.log("Fetched jobs:", jobs);
   }, [fetchTrigger]);
 
   const filteredJobs =
