@@ -18,7 +18,7 @@ const JobCard = ({ job, fetchJobs }) => {
       await api.patch(`/api/jobs/${job._id}`, {
         ...job,
         status: e.target.value,
-      });
+      });      
       fetchJobs();
       toast.success("Status updated.");
     } catch (error) {
