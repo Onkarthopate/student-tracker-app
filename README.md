@@ -29,28 +29,29 @@ This is a fullstack **Student Job Tracker** web application built for the **Cuve
 ## 🌐 Live App
 
 **Frontend (Vercel):** https://student-tracker-app-beryl.vercel.app 
-**Backend (Render/Railway):** https://student-tracker-backend-7fni.onrender.com
+
+**Backend (Render):** https://student-tracker-backend-7fni.onrender.com
 
 ---
 
-# 1. Go to the frontend folder
+### 1. Go to the frontend folder
 cd frontend
 
-# 2. Install dependencies
+### 2. Install dependencies
 npm install
 
-# 3. (Optional) Create a .env file for your API base URL
-# For Vite:
+### 3. (Optional) Create a .env file for your API base URL
+For Vite:
 VITE_API_BASE_URL=https://your-backend-url.onrender.com/api
 
-# For Create React App:
+### For Create React App:
 REACT_APP_API_BASE_URL=https://your-backend-url.onrender.com/api
 
-# 4. Run the development server
-# If using Vite
+### 4. Run the development server
+If using Vite
 npm run dev
 
-# If using Create React App
+If using Create React App
 npm start
 
 # The app will run at:
